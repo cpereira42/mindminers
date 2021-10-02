@@ -27,7 +27,8 @@ namespace subtitles
         {
             Subtitles teste = new Subtitles();
             Console.WriteLine("welcome Mindminers Subtitles");
-            teste.msg();
+            teste.get_timestamp();
+            //teste.msg();
         }
     }
 }

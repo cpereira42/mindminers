@@ -9,6 +9,40 @@ namespace subtitles
         public int      num;
         private string  _input_file;
         private string  _output_file;
+        private int     _hour;
+        private int     _min;
+        private int     _sec;
+        private int     _ms;
+        
+        public int set_time(int limit, string msg)
+        {
+            var option = "";
+            int num = 0;
+
+            Console.Write("Please set " + msg + " : ");
+            option = Console.ReadLine();
+            num = Int32.Parse(option);
+            if (num > limit)
+            {
+                Console.WriteLine("Please set "+ msg + " less " + limit);
+                return (set_time(limit, msg));
+            }
+            else
+                return(num);
+        }
+
+        public void get_timestamp()
+        {
+            _hour = set_time(24, "hour");
+            _min = set_time(60, "minutes");
+            _sec = set_time(60, "seconds");
+            _ms = set_time(999, "mileseconds");
+
+            Console.Write("Hour: "+_hour); 
+            Console.Write(" minute: "+_min); 
+            Console.Write(" seconds: "+_sec); 
+            Console.WriteLine(" mileseconds: "+_ms); 
+        }
 
         public void set_input()
         {
