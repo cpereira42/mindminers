@@ -41,7 +41,7 @@ namespace subtitles
             option = Console.ReadLine();
             if (!int.TryParse(option, out int num) || num >= limit)
             {
-                Console.WriteLine("Please set "+ msg + " less " + limit);
+                Console.WriteLine("Invalid in or "+ msg + " more or igualite than " + limit);
                 return (set_time(limit, msg));
             }
             else
@@ -88,7 +88,7 @@ namespace subtitles
         {
             string option;
 
-            Console.Write("Please set Signal + to increment or - to decrement");
+            Console.Write("Please set Signal + to increment or - to decrement : ");
             option = Console.ReadLine();
             if (option == "+")
                 return(1);

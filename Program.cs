@@ -10,7 +10,11 @@ namespace subtitles
         {
             Subtitles action = new Subtitles();
             Console.WriteLine("Welcome Mindminers Subtitles");
-            action.msg();
+            while (action.msg() == 1)
+            {
+                ;
+            }
+
             //action.times.get_timestamp();
         }
     }

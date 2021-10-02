@@ -11,42 +11,65 @@ namespace subtitles
         private string      _output_file;
         public Times times = new Times();
         
-
-        public void set_input()
+        public int msg()
         {
-            Console.WriteLine("Please choose InputFile or 0 to exit:"); 
+            Console.Write("Please choose, 1 to Make a Sinc or 0 to exit : ");
+            var option = Console.ReadLine();
+            if (option == "1")
+                return(set_input());
+                
+            else if (option == "0")
+                return (0);
+            else
+            {
+                Console.WriteLine("Invalid choice");
+                return(msg());
+            }
+        }
+
+        public int set_input()
+        {
+            Console.Write("Please choose InputFile or 0 to exit : "); 
             _input_file = Console.ReadLine();
             if (_input_file == "0")
-                return ;
+                return (0);
             if (File.Exists(_input_file))
             {
                 set_output();
                 if (_output_file == "0")
-                    return ;
+                    return (0);
                 times.get_timestamp();
                 if (confirm() == 1)
-                    read_file();
+                    return (read_file());
                 else
-                    Console.WriteLine("Não confirmado");
+                    return (1);
             }
             else
             {
                 Console.WriteLine("File not found"); 
-                set_input();
+                return (set_input());
             }
         }
 
-        public void read_file()
+        public void set_output()
         {
-            int     counter;  
+            Console.Write("Please choose OutFile : "); 
+            _output_file = Console.ReadLine();
+            if (_output_file == "" )
+            {
+                Console.WriteLine("Invalid Outfile"); 
+                set_output();
+            }
+                
+        }
+
+        public int read_file()
+        {
             string  line;  
             int     controller;
 
-            counter = 1;
             controller = 1;
-
             System.IO.StreamReader file = new System.IO.StreamReader(_input_file);
-
             while((line = file.ReadLine()) != null)  
             {  
                 if (int.TryParse(line, out int num))
@@ -65,15 +88,10 @@ namespace subtitles
                     times.split_time(line, _output_file);
                     controller = 0;
                 }
-            }  
+            }
+            Console.WriteLine("Done !!");
             file.Close();  
-            System.Console.WriteLine("There were {0} lines.", counter); 
-        }
-
-        public void set_output()
-        {
-            Console.WriteLine("Please choose OutFile"); 
-            _output_file = Console.ReadLine();
+            return (1);
         }
 
         public int confirm()
@@ -85,38 +103,17 @@ namespace subtitles
             Console.WriteLine("Outfile = " + _output_file); 
             times.print_signal();
             Console.Write(times.get_date(1) + ":");
-            Console.Write(times.get_date(1) + ":");
             Console.Write(times.get_date(2) + ":");
             Console.Write(times.get_date(3) + ",");
             Console.WriteLine(times.get_date(4));
-            Console.WriteLine("Press 1 to confirm ou 0 to exit :");
+            Console.Write("Press 1 to confirm or 0 to back menu : ");
             option = Console.ReadLine();
             if (option == "1")
-                read_file();
+                return (1);
             else if (option == "0")
                 return (0);
             else
-                confirm();
-            return (0);
+                return (confirm());
         }
-
-        public void msg()
-        {
-            Console.WriteLine("Please choose :");
-            Console.WriteLine("1 - Make a Sinc");
-            Console.WriteLine("2 - Exit");
-            var option = Console.ReadLine();
-            if (option == "1")
-                set_input ();
-                
-            else if (option == "2")
-                Console.WriteLine("2 - Exit");
-            else
-            {
-                Console.WriteLine("Invalid choice");
-                msg();
-            }
-        }
-
     }
 }
