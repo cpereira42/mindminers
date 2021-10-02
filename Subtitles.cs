@@ -64,21 +64,24 @@ namespace subtitles
             counter = 1;
             controller = 1;
 
-            System.IO.StreamReader file = new System.IO.StreamReader(_input_file);  
+            System.IO.StreamReader file = new System.IO.StreamReader(_input_file);
+
             while((line = file.ReadLine()) != null)  
             {  
                 if (int.TryParse(line, out int num))
                 {
                     controller = 1;
-                    System.Console.WriteLine(line);
+                    File.AppendAllText(_output_file, line);
+                    File.AppendAllText(_output_file,"\n");
                 }
                 else if (controller == 0) 
-                    System.Console.WriteLine(line); 
+                {
+                    File.AppendAllText(_output_file, line);
+                    File.AppendAllText(_output_file,"\n");
+                }
                 else
                 {
                     split_time(line);
-                    break;
-                    System.Console.WriteLine("xxxxx");
                     controller = 0;
                 }
             }  
@@ -91,12 +94,13 @@ namespace subtitles
             string[] s2;
 
             s2 = s.Split(' ');
-            Console.Write(change_time(s2[0]));
-            Console.Write(" --> ");
-            Console.WriteLine(change_time(s2[2]));
+            File.AppendAllText(_output_file, change_time(s2[0]));
+            File.AppendAllText(_output_file, " --> ");
+            File.AppendAllText(_output_file, change_time(s2[2]));
+            File.AppendAllText(_output_file, "\n");
         }
 
-        public TimeSpan change_time(string s)
+        public string change_time(string s)
         {
             string[] time;
             int hour;
@@ -104,6 +108,7 @@ namespace subtitles
             int sec;
             int ms;
             TimeSpan new_time;
+            string total = "";
 
             time = s.Split(':');
             hour = Convert.ToInt32(time[0]);
@@ -112,7 +117,12 @@ namespace subtitles
             sec = Convert.ToInt32(time[0]);
             ms = Convert.ToInt32(time[1]);
             new_time = new TimeSpan(0, hour, min, sec,ms);
-            return (new_time + timestamp);
+            new_time += timestamp;
+            total += new_time.ToString("hh") + ":" ;
+            total += new_time.ToString("mm") + ":" ;
+            total += new_time.ToString("ss") + "," ;
+            total += new_time.ToString("fff");
+            return (total);
         }
 
         public void get_timestamp()
