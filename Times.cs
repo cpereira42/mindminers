@@ -13,6 +13,12 @@ namespace subtitles
         private int         _signal;
         private TimeSpan    timestamp;
 
+        public void print_signal()
+        {
+            if (_signal == -1)
+                Console.Write('-');
+        }
+
         public int get_date(int op)
         {
             if (op == 1)
@@ -78,11 +84,25 @@ namespace subtitles
             return (total);
         }
 
+        public int set_signal()
+        {
+            string option;
+
+            Console.Write("Please set Signal + to increment or - to decrement");
+            option = Console.ReadLine();
+            if (option == "+")
+                return(1);
+            else if (option == "-")
+                return(-1);
+            else
+                return(set_signal());
+            
+        }
+
         public void get_timestamp()
         {
-             Console.Write("1"); 
+            _signal = set_signal();
             _hour = set_time(24, "hour");
-            Console.Write("2"); 
             _min = set_time(60, "minutes");
             _sec = set_time(60, "seconds");
             _ms = set_time(1000, "mileseconds");
@@ -90,7 +110,7 @@ namespace subtitles
             Console.Write(" minute: "+_min); 
             Console.Write(" seconds: "+_sec); 
             Console.WriteLine(" mileseconds: "+_ms); 
-            timestamp = new TimeSpan(0, _hour, _min, _sec, _ms);
+            timestamp = new TimeSpan(0, _hour, _min, _sec, _ms) * _signal;
         }
     }
 }

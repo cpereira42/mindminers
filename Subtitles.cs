@@ -23,9 +23,7 @@ namespace subtitles
                 set_output();
                 if (_output_file == "0")
                     return ;
-                Console.WriteLine("teste:"); 
                 times.get_timestamp();
-                Console.WriteLine("22:"); 
                 if (confirm() == 1)
                     read_file();
                 else
@@ -85,6 +83,8 @@ namespace subtitles
             Console.WriteLine("Resume :");
             Console.WriteLine("Inputfile = " + _input_file); 
             Console.WriteLine("Outfile = " + _output_file); 
+            times.print_signal();
+            Console.Write(times.get_date(1) + ":");
             Console.Write(times.get_date(1) + ":");
             Console.Write(times.get_date(2) + ":");
             Console.Write(times.get_date(3) + ",");
