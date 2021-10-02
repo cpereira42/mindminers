@@ -6,14 +6,40 @@ namespace subtitles
 {
     public class Subtitles
     {
-        public int      num;
-        private string  _input_file;
-        private string  _output_file;
-        private int     _hour;
-        private int     _min;
-        private int     _sec;
-        private int     _ms;
-        
+        public int          num;
+        private string      _input_file;
+        private string      _output_file;
+        private int         _hour;
+        private int         _min;
+        private int         _sec;
+        private int         _ms;
+        private TimeSpan    timestamp;
+
+        public void set_input()
+        {
+            Console.WriteLine("Please choose InputFile or 0 to exit:"); 
+            _input_file = Console.ReadLine();
+            if (_input_file == "0")
+                return ;
+            if (File.Exists(_input_file))
+            {
+                set_output();
+                if (_output_file == "0")
+                    return ;
+                get_timestamp();
+                
+                if (confirm() == 1)
+                    read_file();
+                else
+                    Console.WriteLine("Não confirmado");
+            }
+            else
+            {
+                Console.WriteLine("File not found"); 
+                set_input();
+            }
+        }
+
         public int set_time(int limit, string msg)
         {
             var option = "";
@@ -50,7 +76,7 @@ namespace subtitles
                     System.Console.WriteLine(line); 
                 else
                 {
-                    change_time(line);
+                    split_time(line);
                     break;
                     System.Console.WriteLine("xxxxx");
                     controller = 0;
@@ -59,31 +85,34 @@ namespace subtitles
             file.Close();  
             System.Console.WriteLine("There were {0} lines.", counter); 
         }
-       
-        public void change_time(string s)
+
+        public void split_time(string s)
+        {
+            string[] s2;
+
+            s2 = s.Split(' ');
+            Console.Write(change_time(s2[0]));
+            Console.Write(" --> ");
+            Console.WriteLine(change_time(s2[2]));
+        }
+
+        public TimeSpan change_time(string s)
         {
             string[] time;
-            string[] s2;
             int hour;
             int min;
             int sec;
             int ms;
+            TimeSpan new_time;
 
-            s2 = s.Split(' ');
-
-            time = s2[0].Split(':');
+            time = s.Split(':');
             hour = Convert.ToInt32(time[0]);
             min = Convert.ToInt32(time[1]);
             time = time[2].Split(',');
             sec = Convert.ToInt32(time[0]);
-            Console.WriteLine("t2 : "+ time[1]); 
             ms = Convert.ToInt32(time[1]);
-            Console.WriteLine("inicial : "+ s); 
-            var time3 = new TimeSpan(0, hour, min, sec,ms);
-            var time2 = new TimeSpan(0, _hour, _min, _sec, _ms);
-
-            var total = time3 + time2;
-            Console.WriteLine("final = "+ total);
+            new_time = new TimeSpan(0, hour, min, sec,ms);
+            return (new_time + timestamp);
         }
 
         public void get_timestamp()
@@ -96,31 +125,13 @@ namespace subtitles
             Console.Write(" minute: "+_min); 
             Console.Write(" seconds: "+_sec); 
             Console.WriteLine(" mileseconds: "+_ms); 
-        }
-
-        public void set_input()
-        {
-            Console.WriteLine("Please choose InputFile or 0 to exit:"); 
-            _input_file = Console.ReadLine();
-            if (_input_file == "0")
-                return ;
-            
-            get_timestamp();
-            if (File.Exists(_input_file))
-                read_file();
-                //set_output();
-            else
-            {
-                Console.WriteLine("File not found"); 
-                set_input();
-            }
+            timestamp = new TimeSpan(0, _hour, _min, _sec, _ms);
         }
 
         public void set_output()
         {
             Console.WriteLine("Please choose OutFile"); 
             _output_file = Console.ReadLine();
-            confirm();
         }
 
         public int confirm()
@@ -130,10 +141,11 @@ namespace subtitles
             Console.WriteLine("Resume :");
             Console.WriteLine("Inputfile = " + _input_file); 
             Console.WriteLine("Outfile = " + _output_file); 
+            Console.WriteLine(_hour + ":" + _min + ":" + _sec + "," + _ms); 
             Console.WriteLine("Press 1 to confirm ou 0 to exit :");
             option = Console.ReadLine();
             if (option == "1")
-                Console.WriteLine("GO");
+                read_file();
             else if (option == "0")
                 return (0);
             else
