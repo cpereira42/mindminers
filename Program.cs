@@ -6,29 +6,17 @@ namespace subtitles
 {
     class Program
     {
-        static int get_time()
-        {
-            Console.WriteLine("Please choose timestamp"); 
-            var option = Console.ReadLine();
-            //get_output();
-            return (0);
-            // verificar entrada se está no padrão? ou pegar separados?
-        }
-
-        //static int get_output()
-        //{
-         //   Console.WriteLine("Please choose output file"); 
-         //   var option = Console.ReadLine();
-//
-  //      }
-
-
         static void Main(string[] args)
         {
             Subtitles teste = new Subtitles();
-            Console.WriteLine("welcome Mindminers Subtitles");
-            teste.get_timestamp();
-            //teste.msg();
+            Console.WriteLine("Welcome Mindminers Subtitles");
+            teste.msg();
+            //teste.change_time("01:02:03,403 --> 05:06:07,813");
+            //var time = new TimeSpan(0, 1, 59, 3, 4);
+            //var time2 = new TimeSpan(0, 5, 6,7 ,8);
+
+            //var total = time + time2;
+            //Console.WriteLine("Soma = "+ total);
         }
     }
 }
