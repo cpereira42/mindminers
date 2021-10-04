@@ -13,7 +13,7 @@ namespace subtitles
         
         public int msg()
         {
-            Console.Write("Please choose, 1 to Make a Sinc or 0 to exit : ");
+            Console.Write("Please choose 1 to make a synchronization or 0 to exit: ");
             var option = Console.ReadLine();
             if (option == "1")
                 return(set_input());
@@ -29,7 +29,7 @@ namespace subtitles
 
         public int set_input()
         {
-            Console.Write("Please choose InputFile or 0 to exit : "); 
+            Console.Write("Please choose the input file or 0 to exit: "); 
             _input_file = Console.ReadLine();
             if (_input_file == "0")
                 return (0);
@@ -53,11 +53,11 @@ namespace subtitles
 
         public void set_output()
         {
-            Console.Write("Please choose OutFile : "); 
+            Console.Write("Please choose the output file: "); 
             _output_file = Console.ReadLine();
             if (_output_file == "" )
             {
-                Console.WriteLine("Invalid Outfile"); 
+                Console.WriteLine("Invalid output file"); 
                 set_output();
             }
                 
@@ -99,14 +99,14 @@ namespace subtitles
             var option = "";
             Console.WriteLine("");
             Console.WriteLine("Resume :");
-            Console.WriteLine("Inputfile = " + _input_file); 
-            Console.WriteLine("Outfile = " + _output_file); 
+            Console.WriteLine("Input file = " + _input_file); 
+            Console.WriteLine("Output file = " + _output_file); 
             times.print_signal();
             Console.Write(times.get_date(1) + ":");
             Console.Write(times.get_date(2) + ":");
             Console.Write(times.get_date(3) + ",");
             Console.WriteLine(times.get_date(4));
-            Console.Write("Press 1 to confirm or 0 to back menu : ");
+            Console.Write("Press 1 to confirm or 0 to back menu: ");
             option = Console.ReadLine();
             if (option == "1")
                 return (1);

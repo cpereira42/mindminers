@@ -4,18 +4,17 @@ using System.Text;
 
 namespace subtitles
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             Subtitles action = new Subtitles();
-            Console.WriteLine("Welcome Mindminers Subtitles");
+            Console.WriteLine("Welcome to the Mindminers Subtitles");
             while (action.msg() == 1)
             {
                 ;
             }
-
-            //action.times.get_timestamp();
+            Console.WriteLine("Bye");
         }
     }
 }
