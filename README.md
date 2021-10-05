@@ -34,9 +34,7 @@
 
 ## Libraries ##
 
-The following libraries were used in this project:
 ## Requirements ##
-
 
 ## Starting ##
 
@@ -47,13 +45,14 @@ $ git clone https://github.com/cpereira42/mindminers.git
 # Go to the mindminers 
 cd mindminers
 
-# Go to the Program 
-cd Program
-
 ```
 
 ## Running ##
 ```bash
+
+# Go to the Program 
+cd Program
+
 # To compile
 sudo dotnet run
 
@@ -89,6 +88,7 @@ sudo dotnet run
 
 ## Testing ##
 ```bash
+
 # Go to Tests Folder
 cd Tests
 
