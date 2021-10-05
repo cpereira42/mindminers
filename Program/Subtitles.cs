@@ -8,6 +8,7 @@ namespace Program
     public class Subtitles
     {
         public int          num;
+        public string       msg_error;
         private string      _input_file;
         private string      _output_file;
         public Times times = new Times();
@@ -28,17 +29,6 @@ namespace Program
             }
         }
 
-        public int set_input(string name)
-        {
-            _input_file = name;
-            return (1);
-        }
-        public int set_output(string name)
-        {
-            _output_file = name;
-            return (1);
-        }
-
         public int verify_input()
         {
             string name = "";
@@ -46,10 +36,9 @@ namespace Program
             name = Console.ReadLine();
             if (name == "0")
                 return (0);
-            if (File.Exists(name))
+            if (set_input(name) == 1)
             {
-                set_input(name);
-                get_output();
+                verify_output();
                 if (_output_file == "0")
                     return (0);
                 times.get_timestamp();
@@ -59,26 +48,43 @@ namespace Program
                     return (1);
             }
             else
-            {
-                Console.WriteLine("File not found"); 
                 return (verify_input());
-            }
         }
 
-        public void get_output()
+        public int set_input(string name)
+        {
+            if (File.Exists(name))
+            {
+                _input_file = name;
+                return (1);
+            }
+            else
+            {
+                Console.WriteLine("File not found");
+                return (0);
+            }
+                
+        }
+
+        public int set_output(string name)
+        {
+            if (name == "")
+                return 0;        
+            _output_file = name;
+            return (1);
+        }
+
+        public void verify_output()
         {
             string name;
 
             Console.Write("Please choose the output file: "); 
             name = Console.ReadLine();
-            if (name == "")
+            if (set_output(name) == 0)
             {
                 Console.WriteLine("Invalid output file"); 
-                get_output();
+                verify_output();
             }
-            else
-                set_output(name);
-                
         }
 
         public int read_file()
