@@ -55,14 +55,5 @@ namespace Tests
             var ret = action.set_output("");
             Assert.Equal(0, ret);
         }
-
-        [Fact]
-        public void compar_file()
-        {
-            string text = System.IO.File.ReadAllText(@"../../../../subtitle.srt");
-            string text2 = System.IO.File.ReadAllText(@"../../../../out2.srt");
-            Assert.Equal(text, text2);
-        }
-        
     }
 }

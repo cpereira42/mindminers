@@ -10,7 +10,7 @@ namespace Program
         {
             Subtitles action = new Subtitles();
             Console.WriteLine("Welcome to the Mindminers Subtitles");
-            while (action.msg() == 1)
+            while (action.begin() == 1)
             {
                 ;
             }

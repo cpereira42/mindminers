@@ -13,7 +13,8 @@ namespace Program
         private string      _output_file;
         public Times times = new Times();
 
-        public int msg()
+        
+        public int begin()
         {
             Console.Write("Please choose 1 to make a synchronization or 0 to exit: ");
             var option = Console.ReadLine();
@@ -25,10 +26,13 @@ namespace Program
             else
             {
                 Console.WriteLine("Invalid choice");
-                return(msg());
+                return(begin());
             }
         }
 
+        /*
+        // This function verify if the file is valid
+        */
         public int verify_input()
         {
             string name = "";
@@ -36,26 +40,27 @@ namespace Program
             name = Console.ReadLine();
             if (name == "0")
                 return (0);
-            if (set_input(name) == 1)
+            if (set_input(name) == 1)     // verify if file is valid
             {
-                verify_output();
-                if (_output_file == "0")
+                verify_output();         // get output file
+                if (_output_file == "0") // verify input is 0 to back to menu
                     return (0);
-                times.get_timestamp();
-                if (confirm() == 1)
-                    return (read_file());
+                times.set_timestamp();   // set times inputs
+                if (confirm() == 1)      // confirm the choices
+                    return (read_file());// do process
                 else
                     return (1);
             }
             else
-                return (verify_input());
+                return (verify_input()); // verify input again
         }
 
         public int set_input(string name)
         {
-            if (File.Exists(name))
+            if (File.Exists(name))      // verify if file exit
             {
-                _input_file = name;
+                _input_file = name;     
+                times.get_limit_sync(name);  // get _first time
                 return (1);
             }
             else
@@ -68,7 +73,7 @@ namespace Program
 
         public int set_output(string name)
         {
-            if (name == "")
+            if (name == "")           // verify if file isn't empty
                 return 0;        
             _output_file = name;
             return (1);
@@ -80,13 +85,16 @@ namespace Program
 
             Console.Write("Please choose the output file: "); 
             name = Console.ReadLine();
-            if (set_output(name) == 0)
+            if (set_output(name) == 0)   // verify if file isn't empty
             {
                 Console.WriteLine("Invalid output file"); 
-                verify_output();
+                verify_output();        // get outputfile again
             }
         }
 
+        /*
+        // This function will sync
+        */
         public int read_file()
         {
             string  line;  
@@ -118,6 +126,9 @@ namespace Program
             return (1);
         }
 
+        /*
+        // This function will display the resume of choice
+        */
         public int confirm()
         {
             var option = "";
