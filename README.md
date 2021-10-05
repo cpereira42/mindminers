@@ -22,7 +22,6 @@
   <a href="#starting">Starting</a> &#xa0; | &#xa0;
   <a href="#running">Running</a> &#xa0; | &#xa0;
   <a href="#testing">Testing</a> &#xa0; | &#xa0;
-  <a href="#exiting">Exiting</a> &#xa0; | &#xa0;
   <a href="https://github.com/cpereira42" target="_blank">Author</a>
 </p>
 
