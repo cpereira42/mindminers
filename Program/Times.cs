@@ -202,10 +202,9 @@ namespace Program
             set_time(4, verify_time(_limit_ms, "mileseconds"));
             set_time(5,0);
             Console.Write("Hour: "+_hour); 
-            Console.Write(" minute: "+_min); 
-            Console.Write(" seconds: "+_sec); 
-            Console.WriteLine(" mileseconds: "+_ms); 
-            Console.WriteLine(_timestamp);
+            Console.Write(", minute: "+_min); 
+            Console.Write(", seconds: "+_sec); 
+            Console.WriteLine(", mileseconds: "+_ms); 
         }
     }
 }
