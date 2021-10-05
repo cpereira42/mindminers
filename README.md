@@ -6,11 +6,11 @@
 <h1 align="center">MINDMINERS 🧪</h1>
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/cpereira42/API42Labs?color=3de069">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/cpereira42/mindminers?color=3de069">
 
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/cpereira42/API42Labs?color=3de069">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/cpereira42/mindminers?color=3de069">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/cpereira42/API42Labs?color=3de069">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/cpereira42/mindminers?color=3de069">
 
 </p>
 
@@ -32,22 +32,11 @@
 
 ## Features ##
 
-The applications works with one or two parameters:
-- one parameter: student's id<br>
-returns the information about a student
-- two parameters: student's id and specific information<br>
-returns the basic information about a student and the specific information
-
 ## Libraries ##
 
 The following libraries were used in this project:
-- [curl](https://curl.se/)
-- [mysql](https://dev.mysql.com/)
-- [json-c](https://github.com/json-c/json-c)
-
 ## Requirements ##
 
-Before starting, you need to have [Docker](https://docs.docker.com/get-docker/) installed.
 
 ## Starting ##
 
