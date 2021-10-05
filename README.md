@@ -3,7 +3,7 @@
   <!-- <a href="https://desafio_cezar.netlify.app">Demo</a> -->
 </div>
 
-<h1 align="center">MINDMINERS 🧪</h1>
+<h1 align="center">Mindminers</h1>
 
 <p align="center">
   <img alt="Github top language" src="https://img.shields.io/github/languages/top/cpereira42/mindminers?color=3de069">
@@ -16,9 +16,8 @@
 
 <p align="center">
   <a href="#about">About</a> &#xa0; | &#xa0;
-  <a href="#features">Features</a> &#xa0; | &#xa0;
+  <a href="#technologies">Technologies</a> &#xa0; | &#xa0;
   <a href="#libraries">Libraries</a> &#xa0; | &#xa0;
-  <a href="#requirements">Requirements</a> &#xa0; | &#xa0;
   <a href="#starting">Starting</a> &#xa0; | &#xa0;
   <a href="#running">Running</a> &#xa0; | &#xa0;
   <a href="#testing">Testing</a> &#xa0; | &#xa0;
@@ -28,12 +27,8 @@
 <br>
 
 ## About ##
-
-## Features ##
-
-## Libraries ##
-
-## Requirements ##
+This is a project made for the selection process for a position as a software engineer at mindminers.<br>
+The aim of this project is synchronize subtitles on a .srt file, increasing or decreasing the time according to the user's needs.<br>
 
 ## Starting ##
 

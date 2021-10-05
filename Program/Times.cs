@@ -28,7 +28,7 @@ namespace Program
         }
 
         /*
-        // This function get the time
+        // This function gets the time
         // 1 = Hour
         // 2 = Minutes
         // 3 = Seconds
@@ -48,7 +48,7 @@ namespace Program
         }
 
         /*
-        // This function get input times and verify the limits, and if correct value
+        // This function gets input time and checks the limits, and if it's the correct value
         */  
         public int verify_time(int limit, string msg)
         {
@@ -66,7 +66,7 @@ namespace Program
         }
 
         /*
-        // this funcion put new Time on file.
+        // This funcion puts new time on the file.
         */
         public void split_time(string s, string output)
         {
@@ -80,7 +80,7 @@ namespace Program
         }
 
         /*
-        // this funcion convert the times IN to new Time
+        // This funcion converts the time
         */
         public string change_time(string s)
         {
@@ -108,7 +108,7 @@ namespace Program
         }
 
         /*
-        // This function get the first time in inputfile
+        // This function gets the first time in inputfile
         */
         public void get_limit_sync(string input_file)
         {
@@ -124,7 +124,7 @@ namespace Program
         }
 
         /*
-        // This function verify if signal is correct
+        // This function checks if the signal is correct
         */
         public int verify_signal()
         {
@@ -142,7 +142,7 @@ namespace Program
         }
 
         /*
-        // This function set the Signal and set the limits input times
+        // This function sets the signal and sets the limits of input time
         */
         public void set_signal(int num)
         {
@@ -169,7 +169,7 @@ namespace Program
         }
 
         /*
-        // This function set the time
+        // This function sets the time
         // 1 = Hour
         // 2 = Minutes
         // 3 = Seconds
@@ -191,7 +191,7 @@ namespace Program
         }
 
         /*
-        // This function set times
+        // This function sets time
         */
         public void set_timestamp()
         {

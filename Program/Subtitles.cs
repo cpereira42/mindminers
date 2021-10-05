@@ -31,7 +31,7 @@ namespace Program
         }
 
         /*
-        // This function verify if the file is valid
+        // This function checks if the file is valid
         */
         public int verify_input()
         {
